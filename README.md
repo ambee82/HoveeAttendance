@@ -1,1 +1,1 @@
-# WhoWeAttendance
+# WhoWeAttendance Project
