@@ -21,42 +21,67 @@ class General extends Controller
     public function about_us(Request $request)
     {
         $this->data['title'] = "About Us";
-        return view('pages.index', $this->data);
+        return view('guest.about_us', $this->data);
     }
 
     public function how_it_works(Request $request)
     {
         $this->data['title'] = "How it works";
-        return view('pages.index', $this->data);
+        return view('guest.how_it_works', $this->data);
     }
     public function subscriptions(Request $request)
     {
         $this->data['title'] = "Subscriptions";
-        return view('pages.index', $this->data);
+        return view('guest.subscriptions', $this->data);
     }
     public function contact_us(Request $request)
     {
         $this->data['title'] = "Contact Us";
-        return view('pages.index', $this->data);
+        return view('guest.contact_us', $this->data);
     }
     public function register(Request $request)
     {
         $this->data['title'] = "Register";
-        return view('pages.index', $this->data);
+        return view('guest.register', $this->data);
+    }
+    public function login(Request $request)
+    {
+        $this->data['title'] = "Register";
+        return view('guest.login', $this->data);
     }
     public function terms_and_conditions(Request $request)
     {
         $this->data['title'] = "Terms and condtions";
-        return view('pages.index', $this->data);
+        return view('guest.terms_and_conditions', $this->data);
     }
     public function thanks(Request $request)
     {
         $this->data['title'] = "Thanks";
-        return view('pages.index', $this->data);
+        return view('guest.thanks', $this->data);
     }
     public function testimonials(Request $request)
     {
         $this->data['title'] = "Testimonials";
-        return view('pages.index', $this->data);
+        return view('guest.testimonials', $this->data);
+    }
+    public function services(Request $request)
+    {
+        $this->data['title'] = "Services";
+        return view('guest.services', $this->data);
+    }
+    public function blogs(Request $request)
+    {
+        $this->data['title'] = "Services";
+        return view('guest.blogs', $this->data);
+    }
+    public function support(Request $request)
+    {
+        $this->data['title'] = "Services";
+        return view('guest.support', $this->data);
+    }
+    public function sitemap(Request $request)
+    {
+        $this->data['title'] = "Services";
+        return view('guest.sitemap', $this->data);
     }
 }

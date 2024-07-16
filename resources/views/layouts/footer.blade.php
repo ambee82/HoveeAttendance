@@ -96,7 +96,7 @@
                         <div class="row mt-3">
                             <div class="col-md-12 col-lg-6">
                                 <span><a href="#"> <img
-                                            src="http://hovee.in/beta/public/asset('assets/images/barcode.png"
+                                            src="http://hovee.in/beta/public/assets/images/barcode.png"
                                             alt="" class="appstore "></a></span>
                             </div>
                             <div class="col-md-12 col-lg-6">

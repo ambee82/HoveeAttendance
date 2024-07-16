@@ -51,7 +51,7 @@
                 <ul class="mb-0">
                     <li aria-haspopup="true" class=" d-none d-lg-block top-postbtn">
                         <span><a class="btn bg-secondary px-5 ad-post rounded-pill text-white fw-bold"
-                                href="login.php">Log In</a></span>
+                                href="{{ route('login') }}">Log In</a></span>
                     </li>
                 </ul>
             </nav>
