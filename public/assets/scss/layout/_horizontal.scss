@@ -125,9 +125,7 @@ video {
 					display: inline-block;
 					font-size: 14px;
 					line-height: inherit;
-					margin-right: 7px;
 					vertical-align: top;
-					margin-top: 2px;
 					&.fa-home {
 						font-size: 15px;
 					}
@@ -680,7 +678,7 @@ video {
 						color: $white;
 					}
 					span.fa.fa-caret-down {
-						display: none !important;
+						display: none;
 					}
 				}
 				a.menuhomeicon {
@@ -1395,9 +1393,7 @@ video {
 					display: inline-block;
 					font-size: 14px;
 					line-height: inherit;
-					margin-right: 7px;
 					vertical-align: top;
-					margin-top: 2px;
 					&.fa-home {
 						font-size: 15px;
 					}
@@ -1952,8 +1948,8 @@ video {
 						background: $secondary;
 						color: $white;
 					}
-					span.fa.fa-caret-down  {
-						display: none !important;
+					span.fa.fa-caret-down {
+						display: none;
 					}
 				}
 				a.menuhomeicon {

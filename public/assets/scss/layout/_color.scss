@@ -673,8 +673,7 @@ a.chip:hover {
 }
 
 .social-icons li:hover {
-	background: rgb(108,0,122);
-	background: linear-gradient(208deg, rgba(108,0,122,1) 22%, rgba(160,4,85,1) 76%);
+	background: $primary;
 	color: $white;
 }
 
@@ -717,8 +716,7 @@ a.chip:hover {
 }
 
 .items-blog-tab-heading .items-blog-tab-menu li .active {
- background: rgb(108,0,122);
-	background: linear-gradient(208deg, rgba(108,0,122,1) 22%, rgba(160,4,85,1) 76%);;
+	background: $primary !important;
 	color: $white;
 }
 
@@ -1115,8 +1113,7 @@ form.convFormDynamic button.submit {
 }
 
 .bg-background3:before {
-	background: rgb(108,0,122);
-  background: linear-gradient(208deg, rgba(108,0,122,1) 22%, rgba(160,4,85,1) 76%);
+	background: linear-gradient(-225deg, $primary-08 48%, $secondary-08 100%);
 }
 
 .bg-background-5:before,
