@@ -30,7 +30,7 @@
             <!--Nav-->
             <nav class="horizontalMenu clearfix d-md-flex">
                 <ul class="horizontalMenu-list">
-                    <li aria-haspopup="true"><a href="index.php" class=""><i class="fa fa-home"></i> Home</a>
+                    <li aria-haspopup="true"><a href="{{ route('index') }}" class=""><i class="fa fa-home"></i> Home</a>
                     </li>
                     <li aria-haspopup="true"><a href="about.php"><i class="fa fa-cubes"></i> About Us </a></li>
                     <li aria-haspopup="true"><a href="blog.php"><i class="fa fa-th"></i> Blog</a></li>

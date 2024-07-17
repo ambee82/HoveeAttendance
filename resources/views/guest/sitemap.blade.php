@@ -13,7 +13,7 @@
                     <div class="text-center text-white ">
                         <h1 class="">Site Map</h1>
                         <ol class="breadcrumb text-center">
-                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
                             <li class="breadcrumb-item text-white">Site Map</li>
                         </ol>
                     </div>
@@ -41,7 +41,7 @@
                                         <div class="card-body">
                                             <ul class="list-unstyled widget-spec  p-1 mb-0">
                                                 <li class="">
-                                                    <a href="index.php" class="text-dark"><i
+                                                    <a href="{{ route('index') }}" class="text-dark"><i
                                                             class="icon icon-arrow-right-circle text-primary"></i> Home
                                                         Page</a>
                                                 </li>

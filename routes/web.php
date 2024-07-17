@@ -18,8 +18,11 @@ Route::controller(General::class)->group(function () {
     Route::get('/help-and-support', 'support')->name('help-and-support');
     Route::get('/blogs', 'blogs')->name('blogs');
     Route::get('/testimonials', 'testimonials')->name('testimonials');
-
     Route::get('/register', 'register')->name('register');
     Route::get('/login', 'login')->name('login');
 });
+
+// Route::controller(Tutor::class)->group(function () {
+    
+// });
 

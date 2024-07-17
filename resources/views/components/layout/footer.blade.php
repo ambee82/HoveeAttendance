@@ -16,7 +16,7 @@
                         <h6 class="text-white">Our Quick Links</h6>
                         <hr class="deep-purple text-primary accent-2 mb-4 mt-0 d-inline-block mx-auto">
                         <ul class="list-unstyled mb-0">
-                            <li><a href="index.php">Our Team</a></li>
+                            <li><a href="{{ route('index') }}">Our Team</a></li>
                             <li><a href="contact.php">Contact US</a></li>
                             <li><a href="about.php">About</a></li>
                             <li><a href="services.php">service</a></li>

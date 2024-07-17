@@ -12,7 +12,7 @@
                     <div class="text-center text-white ">
                         <h1 class="">Contact Us</h1>
                         <ol class="breadcrumb text-center">
-                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
                             <li class="breadcrumb-item  text-white">Contact Us</li>
                         </ol>
                     </div>

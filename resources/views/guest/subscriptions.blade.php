@@ -12,7 +12,7 @@
                     <div class="text-center text-white ">
                         <h1 class="">Subscription Plan</h1>
                         <ol class="breadcrumb text-center">
-                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
                             <li class="breadcrumb-item  text-white">Subscription</li>
                         </ol>
                     </div>
