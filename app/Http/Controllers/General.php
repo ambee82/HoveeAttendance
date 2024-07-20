@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class General extends Controller
 {
@@ -49,6 +50,19 @@ class General extends Controller
         $this->data['title'] = "Register";
         return view('guest.login', $this->data);
     }
+    public function verify_otp(Request $request)
+    {
+        $this->data['title'] = "Verify OTP";
+
+        if (!($this->data['otp_telephone'] = session()->get('otp_telephone'))) {
+            return redirect()->route('login')->with('error', 'Please try to login');
+        }
+
+        $this->data['otp_user_id'] = session()->get('otp_user_id');
+        $this->data['otp_digits'] = session()->get('otp_digits');
+
+        return view('guest.verify_otp', $this->data);
+    }
     public function terms_and_conditions(Request $request)
     {
         $this->data['title'] = "Terms and condtions";
@@ -83,5 +97,12 @@ class General extends Controller
     {
         $this->data['title'] = "Services";
         return view('guest.sitemap', $this->data);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'logout successfully');
     }
 }

@@ -51,21 +51,26 @@
                                 <div class="row ">
                                     <div class="col-md-12 mx-auto ">
                                         <div class="card ">
-                                            <div class="card-body">
+                                            <form method="POST" action="{{ route('auth.login') }}" class="card-body">
+                                                @csrf
                                                 <div class="form-group">
                                                     <div class="text-start">
                                                         <h2 class="text-primary ">welcome to hovee !!</h2>
                                                         <h5 class="text-dark pb-5 fs-6">Your presence not your absence</h5>
                                                     </div>
-                                                    <label class="form-label text-dark">Email / hov id</label>
-                                                    <input type="text" class="form-control ps bg-light"
-                                                        placeholder="Enter email / hov id">
+
+
+                                                    <x-forms.input label="Email / hov id" name="identifier" type="text" placeholder="Enter email / hov id"></x-forms.input>
+
+
+                                                    
                                                     <div class="text-center mt-5">
-                                                        <a href="otp.php" class=" btn btn-secondary "><span
-                                                                class="">Login</span></a>
+                                                        <button type="submit" class=" btn btn-secondary ">
+                                                            <span class="">Login</span>
+                                                        </button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

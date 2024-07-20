@@ -13957,7 +13957,7 @@ textarea[cols] {
   }
 
   .banner-1.sptb-2 {
-    padding-top: 0 !important;
+    padding-top: 5rem !important;
     padding-bottom: 12rem !important;
   }
 
@@ -15200,7 +15200,7 @@ dd {
   }
 
   .banner-1.sptb-2 {
-    padding-top: 0;
+    padding-top: 2rem;
     padding-bottom: 12rem;
   }
 
@@ -16616,11 +16616,7 @@ a.typewrite {
   background: rgba(0, 0, 0, 0.2);
 }
 
-@media (min-width: 411px) and (max-width: 414px) {
-  .banner-1 {
-    height: 576px !important;
-  }
-}
+
 
 .blog-list .item7-card-img {
   height: 196px !important;
@@ -58995,6 +58991,8 @@ hr {
   left: 0;
 }
 
+
+
 .badge-4 {
   background-color: rgb(160, 4, 85);
   color: #fff;
@@ -59462,7 +59460,6 @@ hr {
 
   .header-banner-text {
     font-size: 1.5rem !important;
-    margin-top: 100px !important;
   }
 
 
@@ -59482,43 +59479,16 @@ hr {
 
 @media (max-width: 786px) {
 
-
-  .header-banner-text {
-    font-size: 1.5rem !important;
-  }
-
   .bg-background2 .header-text {
     position: relative;
     z-index: 10;
-    top: 150px;
+    top: 100px;
     /* bottom: 0px; */
     margin-top: -130px;
   }
 
   .barcode-sub {
     margin-left: 0px !important;
-  }
-
-  .img-thumbnail-1 {
-    padding: 0.25rem;
-    background-color: #fff;
-    border: 1px solid #e8ebf3;
-    border-radius: 3px;
-    max-width: 60% !important;
-    height: auto;
-  }
-
-  .header-banner-text {
-    font-size: 1.5rem !important;
-    margin-top: 0 !important;
-  }
-
-  .bg-background2 .header-text {
-    position: relative;
-    z-index: 10;
-    top: 150px;
-    /* bottom: 0px; */
-    margin-top: -130px;
   }
 
   .services-1 .row {
@@ -59586,19 +59556,12 @@ hr {
   }
 
   .img-thumbnail-1 {
-    padding: 0.25rem;
-    background-color: #fff;
-    border: 1px solid #e8ebf3;
-    border-radius: 3px;
-    max-width: 30% !important;
-    height: auto;
-    margin-top: -80px;
-    top: 50px;
-    margin-left: 200px;
+    visibility: hidden;
   }
 
   .header-banner-text {
     font-size: 1.5rem !important;
+    margin-top: -25px !important;
   }
 
   .img-thumbnail-2 {
@@ -59639,5 +59602,12 @@ hr {
   .barcode-sub {
     margin-right: 30px !important;
     margin-left: -25px !important;
+  }
+}
+
+@media (max-width: 468px) {
+  .header-banner-text {
+    font-size: 1.5rem !important;
+    margin-top: -25px !important;
   }
 }
