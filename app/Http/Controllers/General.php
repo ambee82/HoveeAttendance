@@ -54,12 +54,12 @@ class General extends Controller
     {
         $this->data['title'] = "Verify OTP";
 
-        if (!($this->data['otp_telephone'] = session()->get('otp_telephone'))) {
+        if (!($this->data['otp_telephone'] = $request->session()->get('otp_telephone'))) {
             return redirect()->route('login')->with('error', 'Please try to login');
         }
 
-        $this->data['otp_user_id'] = session()->get('otp_user_id');
-        $this->data['otp_digits'] = session()->get('otp_digits');
+        $this->data['otp_user_id'] = $request->session()->get('otp_user_id');
+        $this->data['otp_digits'] = $request->session()->get('otp_digits');
 
         return view('guest.verify_otp', $this->data);
     }

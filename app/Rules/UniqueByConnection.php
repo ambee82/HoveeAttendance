@@ -17,7 +17,7 @@ class UniqueByConnection implements ValidationRule
      *
      * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
-    public function __construct($connection = 'mysql', $table, $field = 'id', $ignoreid)
+    public function __construct($connection = 'mysql', $table, $field = 'id', $ignoreid = false)
     {
         $this->ignoreid = $ignoreid;
         $this->table = $table;
@@ -29,15 +29,17 @@ class UniqueByConnection implements ValidationRule
     {
         $exist = DB::connection($this->connection)
             ->table($this->table)
-            ->where($this->field, $value)
-            ->where('id', '!=', $this->ignoreid)
-            ->exists();
-        
+            ->where($this->field, $value);
 
-        if($exist){
+        if ($this->ignoreid) {
+            $exist = $exist->where('id', '!=', $this->ignoreid);
+        }
+
+        $exist =  $exist->exists();
+
+
+        if ($exist) {
             $fail('The :attribute has already been taken.');
         }
     }
-
-    
 }

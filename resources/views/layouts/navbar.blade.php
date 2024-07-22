@@ -29,28 +29,20 @@
             </div>
             <!--Nav-->
             <nav class="horizontalMenu clearfix d-md-flex">
-                <ul class="horizontalMenu-list">
-                    <li aria-haspopup="true"><a href="{{ route('index') }}" class=""><i
-                                class="fa fa-home px-1"></i>
-                            Home</a>
-                    </li>
-                    <li aria-haspopup="true"><a href="{{ route('about-us') }}"><i class="fa fa-info-circle px-1"></i>
-                            About Us </a></li>
-                    <li aria-haspopup="true"><a href="{{ route('how-it-works') }}"><i class="fa fa-cogs px-1"></i> How
-                            it
-                            Works</a></li>
-                    <li aria-haspopup="true"><a href="{{ route('subscriptions') }}"><i
-                                class="fa fa-credit-card px-1"></i>
-                            Subscription<span class="hmarrow"></span></a></li>
-                    <li aria-haspopup="true"><a href="{{ route('contact-us') }}"><i
-                                class="fa fa-address-book-o px-1"></i> Contact
-                            Us <span class="hmarrow"></span></a></li>
+                
 
-                    <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
-                        <span><a class="btn bg-secondary px-5 fw-bold text-white" href="login.php">Login
-                            </a></span>
-                    </li>
-                </ul>
+                @switch($userinfo->role_id??false)
+                    @case(1)
+                        @include('layouts.navbar.tutor')
+                    @break
+
+                    @case(2)
+                        @include('layouts.navbar.institute')
+                    @break
+
+                    @default
+                        @include('layouts.navbar.guest')
+                @endswitch
                 <ul class="mb-0">
                     @auth()
                         <li aria-haspopup="true" class=" d-none d-lg-block top-postbtn">

@@ -9,6 +9,7 @@ use Throwable;
 use App\Models\User;
 use App\Models\UserInfo;
 use App\Models\VerificationCode;
+use App\Rules\UniqueByConnection;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -135,5 +136,76 @@ class AuthController extends Controller
             'otp' => strval(rand(123456, 999999)),
             'expire_at' => Carbon::now()->addMinutes(10)
         ]);
+    }
+
+    public  function register(Request $request)
+    {
+        try {
+
+            $validator = Validator::make($request->all(), [
+                'first_name' => 'required|string|max:20',
+                'last_name' => 'required|string|max:20',
+                'dob' => 'required|date',
+                'mobile_no' => ['required', 'integer', 'digits:10', new UniqueByConnection('second_db', 'whowe_users', 'mobile_no')],
+                'email' => ['required', 'email', new UniqueByConnection('second_db', 'whowe_users', 'email')],
+                'pincode' => 'required|string|max:6',
+                'governmentproof' => 'required|string',
+                'terms_accepted' => 'accepted',
+            ]);
+           
+
+            if ($validator->fails()) {
+                return redirect()->back()->withInput()->withErrors($validator);
+            }
+           
+
+            // Generate Whowe ID
+            $whoweID = $this->generateWhoweID(
+                $request->first_name,
+                $request->last_name,
+                $request->mobile_no,
+                $request->dob,
+                $request->pincode
+            );
+
+            $user = User::create([
+                'whowe_id' => $whoweID,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'dob' => $request->dob,
+                'mobile_no' => $request->mobile_no,
+                'email' => $request->email,
+                'pincode' => $request->pincode,
+                'government_proof' => $request->governmentproof,
+                'terms_accepted' => $request->terms_accepted,
+                'is_verified' => false,
+            ]);
+
+
+
+
+
+
+            // Generate OTP
+            $otp = $this->generateOtp($request->mobile_no);
+
+
+            $request->session()->put('otp_telephone', $user->mobile_no);
+            $request->session()->put('otp_user_id', $user->id);
+            $request->session()->put('otp_digits', $otp->otp);
+
+
+            return redirect()->route('verify-otp')->with('success', 'OTP sent for verification.');
+        } catch (Throwable $e) {
+
+            throw $e;
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
+    }
+
+    private function generateWhoweID($firstName, $lastName, $phoneNumber, $dob, $pincode)
+    {
+        return "hov-" . strtoupper(substr($firstName, 0, 1)) . strtoupper(substr($lastName, 0, 1)) .
+            "-91-" . substr($phoneNumber, -4) . "-" . substr(explode('-', $dob)[2], -4) . "-" . substr($pincode, -2);
     }
 }
