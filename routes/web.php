@@ -1,12 +1,17 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AuthUserController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+// Controllers
 use App\Http\Controllers\StaticPages;
 use App\Http\Controllers\General;
-use App\Http\Controllers\Tutor;
+use App\Http\Controllers\Tutor\Courses as TutorCourses;
+use App\Http\Controllers\TutorController;
+
+// Middlewares
 use App\Http\Middleware\AuthUser;
+use App\Http\Middleware\TutorWare;
 
 Route::controller(General::class)->group(function () {
     Route::get('/', 'index')->name('index');
@@ -34,9 +39,38 @@ Route::name('auth.')->controller(AuthController::class)->prefix('/auth')->group(
 });
 
 Route::middleware([AuthUser::class])->name('user.')
-    ->controller(AuthUserController::class)->prefix('/user')->group(function () {
+    ->controller(UserController::class)->prefix('/user')->group(function () {
+
         Route::get('/switch-role', 'switch_role')->name('switch-role');
+        Route::get('/redirect-dashboard', 'redirect_dashboard')->name('redirect-dashboard');
+        Route::prefix('/profile')->name('profile.')->group(function () {
+            Route::get('/', 'profile_info')->name('info');
+            Route::get('/address', 'profile_address')->name('address');
+        });
         Route::prefix('/forms')->name('forms.')->group(function () {
             Route::post('/switch-role', 'post_switch_role')->name('switch-role');
+
+            Route::prefix('/profile')->name('profile.')->group(function () {
+                Route::post('/info', 'save_profile_info')->name('info');
+                Route::post('/address', 'save_profile_address')->name('address');
+            });
+        });
+    });
+Route::middleware([AuthUser::class, TutorWare::class])
+    ->controller(TutorController::class)
+    ->name('tutor.')->prefix('/tutor')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/qualification', 'profile_qualification')->name('profile.qualification');
+
+        Route::resources([
+            'courses' => TutorCourses::class,
+        ]);
+
+        Route::prefix('/forms')->name('forms.')->group(function () {
+            Route::post('/update-qualification', 'update_qualification')->name('update.qualification');
+
+           
         });
     });

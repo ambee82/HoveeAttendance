@@ -95,7 +95,7 @@
                                         <div class="card-body">
                                             <ul class="list-unstyled widget-spec p-1">
                                                 <li class="">
-                                                    <a href="tutor-dashboard.php" class="text-dark"><i
+                                                    <a href="{{route('tutor.dashboard')}}" class="text-dark"><i
                                                             class="icon icon-arrow-right-circle text-primary"></i>
                                                         Dashboard</a>
                                                 </li>

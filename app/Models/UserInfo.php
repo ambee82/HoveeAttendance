@@ -7,14 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Roles;
 
-class UserRole extends Model
+class UserInfo extends Model
 {
-    protected $table = 'user_role';
     use HasFactory;
+    protected $table = 'user_info';
 
     protected $fillable = [
         'user_id',
         'role_id',
+        'primary_address',
+        'secondary_address',
+        'city',
+        'state',
+        'country',
+        'zipcode',
     ];
 
     public function role()
@@ -25,5 +31,9 @@ class UserRole extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'role_id');
+    }
+    public function tutor_info()
+    {
+        return $this->hasOne(TutorInfo::class, 'user_id', 'user_id');
     }
 }

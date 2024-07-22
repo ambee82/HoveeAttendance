@@ -7,11 +7,12 @@ use Carbon\Carbon;
 use Throwable;
 
 use App\Models\User;
-use App\Models\UserRole;
+use App\Models\UserInfo;
 use App\Models\VerificationCode;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+
 
 class AuthController extends Controller
 {
@@ -86,15 +87,16 @@ class AuthController extends Controller
                 return redirect()->back()->withErrors(['otp' => "Invalid or expired OTP"]);
             }
             $otp->update(['expire_at' => Carbon::now()]);
+            $request->session()->forget(['otp_telephone', 'otp_user_id', 'otp_digits']);
 
             $user = User::find($request->user_id);
 
             if ($user) {
 
-                $user_role = UserRole::where('user_id', $user->id)->first();
+                $user_info = UserInfo::where('user_id', $user->id)->first();
 
-                if ($user_role) {
-                    UserRole::create([
+                if (!$user_info) {
+                    UserInfo::create([
                         'user_id' => $user->id,
                         'role_id' => 1,
                     ]);
@@ -102,8 +104,6 @@ class AuthController extends Controller
                 Auth::login($user, true);
 
                 return redirect()->route('user.switch-role')->with('success', 'Login successfully');
-
-                
             } else {
                 throw new Exception('User not found.');
             }

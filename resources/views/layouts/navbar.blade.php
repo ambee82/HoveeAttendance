@@ -52,12 +52,13 @@
                     </li>
                 </ul>
                 <ul class="mb-0">
-                    @auth
+                    @auth()
                         <li aria-haspopup="true" class=" d-none d-lg-block top-postbtn">
                             <span><a class="btn bg-secondary px-5 ad-post rounded-pill text-white fw-bold"
                                     href="{{ route('logout') }}">Log Out</a></span>
                         </li>
                     @endauth
+
 
                     @guest
                         <li aria-haspopup="true" class=" d-none d-lg-block top-postbtn">

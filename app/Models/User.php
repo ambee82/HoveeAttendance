@@ -6,7 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\UserRole;
+use App\Models\UserInfo;
+use Illuminate\Support\Carbon;
 
 class User extends Authenticatable
 {
@@ -23,7 +24,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-     
+
     protected $fillable = [
         'whowe_id',
         'first_name',
@@ -69,8 +70,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function user_role()
+    public function user_info()
     {
-        return $this->hasOne(UserRole::class, 'user_id', 'id');
+        return $this->hasOne(UserInfo::class, 'user_id', 'id');
     }
+    public function get_role()
+    {
+        return UserInfo::where('user_id', $this->id)->first();
+    }
+
 }
