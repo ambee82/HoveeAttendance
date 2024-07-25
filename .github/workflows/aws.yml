@@ -37,9 +37,9 @@ jobs:
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
           ssh-add -l  # List loaded SSH keys for debugging
 
-      - name: Test SSH connection
-        run: |
-          ssh -v $PRODUCTION_SERVER "echo 'SSH connection successful'"
+      # - name: Test SSH connection
+      #   run: |
+      #     ssh -v $PRODUCTION_SERVER "echo 'SSH connection successful'"
 
       - name: Deploy to server
         run: |
