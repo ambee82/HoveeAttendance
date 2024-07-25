@@ -16,7 +16,7 @@ class input extends Component
         public string $name = '',
         public string $label = '',
         public string $placeholder = '',
-        public $value = false,
+        public string $value = '',
     ) {
         //
     }
