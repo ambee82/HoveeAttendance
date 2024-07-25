@@ -30,7 +30,8 @@
             <!--Nav-->
             <nav class="horizontalMenu clearfix d-md-flex">
                 <ul class="horizontalMenu-list">
-                    <li aria-haspopup="true"><a href="{{ route('index') }}" class=""><i class="fa fa-home"></i> Home</a>
+                    <li aria-haspopup="true"><a href="{{ route('index') }}" class=""><i class="fa fa-home"></i>
+                            Home</a>
                     </li>
                     <li aria-haspopup="true"><a href="about.php"><i class="fa fa-cubes"></i> About Us </a></li>
                     <li aria-haspopup="true"><a href="blog.php"><i class="fa fa-th"></i> Blog</a></li>
@@ -121,7 +122,7 @@
                                             <li><a href="testimonials.php">Testimonials</a></li>
                                             <li><a href="terms-conditions.php">Terms & Conditions</a></li>
                                             <li><a href="faq.php">FAQ</a></li>
-                                            <li><a href="login.php">Login</a></li>
+                                            <li><a href="{{ route('login') }}">Login</a></li>
                                             <li><a href="help-support.php">Help & Support</a></li>
                                             <li><a href="otp.php">Otp</a></li>
                                             <li><a href="forgot-password.php">Forgot Password</a></li>
