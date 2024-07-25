@@ -14,9 +14,4 @@
     <li aria-haspopup="true"><a href="{{ route('contact-us') }}"><i
                 class="fa fa-address-book-o px-1"></i> Contact
             Us <span class="hmarrow"></span></a></li>
-
-    <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
-        <span><a class="btn bg-secondary px-5 fw-bold text-white" href="login.php">Login
-            </a></span>
-    </li>
 </ul>
