@@ -14,6 +14,7 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -135,6 +136,25 @@ class UserController extends Controller
             $user->save();
 
 
+            if ($request->hasFile('avatar')) {
+
+                if ($user->profile_images && Storage::disk('s3')->exists($user->profile_images)) {
+                    Storage::disk('s3')->delete($user->profile_images);
+                }
+
+
+                $file = $request->avatar;
+
+                $filename = $file->getClientOriginalName();
+
+
+                $filepath = $file->storeAs('avatars/' . $this->user->id, $filename, 's3');
+
+                $user->profile_images = $filepath;
+                $user->save();
+            }
+
+
             return redirect()->back()->with('success', 'Profile info updated');
         } catch (Throwable $e) {
             return redirect()->back()->withInput()->with('error', $e->getMessage());
@@ -155,13 +175,13 @@ class UserController extends Controller
                     'zipcode' => 'required|string|max:6',
                 ]
             );
-            
+
 
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
-            $userinfo = UserInfo::where('user_id',$this->user->id)->first();
+            $userinfo = UserInfo::where('user_id', $this->user->id)->first();
 
             $userinfo->primary_address = $request->primary_address;
             $userinfo->secondary_address = $request->secondary_address;

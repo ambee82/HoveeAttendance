@@ -64,8 +64,8 @@
                                 <div class="row ">
                                     <div class="col-md-12 ">
                                         <div class="card ">
-                                            <form method="POST" action="{{ route('user.forms.profile.info') }}"
-                                                class="card-body">
+                                            <form method="POST" enctype="multipart/form-data"
+                                                action="{{ route('user.forms.profile.info') }}" class="card-body">
                                                 @csrf
                                                 <div class="form-group">
                                                     <div class="row">
@@ -97,13 +97,16 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+
                                                 <div class="form-group ">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="form-label">Phone number</label>
                                                                 <div class="input-group">
-                                                                    <input type="tel" readonly class="form-control py-5 "
+                                                                    <input type="tel" readonly
+                                                                        class="form-control py-5 "
                                                                         placeholder="your phone number"
                                                                         value="{{ $user->mobile_no }}">
                                                                     <a href="#" class=" btn btn-secondary pt-3"
@@ -115,6 +118,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="form-group ">
+
+                                                        <label class="form-label">Avatar</label>
+                                                        <input type="file" name="avatar" class="form-control"
+                                                            accept="image/*">
+
+                                                       
+                                                        
+
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

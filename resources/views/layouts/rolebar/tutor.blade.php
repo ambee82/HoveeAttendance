@@ -7,7 +7,8 @@
             <div class="profile-pic">
                 <div class="profile-pic-img">
                     <span class="bg-success dots" data-bs-toggle="tooltip" data-bs-placement="top" title="online"></span>
-                    <img src="{{ asset('assets/images/faces/male/1.jpg') }}" class="brround" alt="user">
+                    <img src="{{ $user->profile_images ? Storage::disk('s3')->url($user->profile_images) : asset('assets/images/faces/male/3.jpg') }}"
+                        class="brround" alt="user">
                 </div>
                 <div class="user-wrap wideget-user-info mt-5">
                     <a href="#" class="text-dark">
@@ -43,13 +44,13 @@
                             <div class="app-sidebar__user clearfix">
                                 <ul class="side-menu">
                                     <li>
-                                        <a class="side-menu__item" href="{{route('tutor.dashboard')}}"><img
+                                        <a class="side-menu__item" href="{{ route('tutor.dashboard') }}"><img
                                                 src="{{ asset('assets/images/media/9.png') }}" alt="Course icon"
                                                 width="18"><span class="side-menu__label ms-2">
                                                 Dashboard</span></a>
                                     </li>
                                     <li>
-                                        <a class="side-menu__item" href="{{route('tutor.courses.index')}}"><img
+                                        <a class="side-menu__item" href="{{ route('tutor.courses.index') }}"><img
                                                 src="{{ asset('assets/images/media/9.png') }}" alt="Course icon"
                                                 width="18"><span class="side-menu__label ms-2">
                                                 Courses</span></a>
